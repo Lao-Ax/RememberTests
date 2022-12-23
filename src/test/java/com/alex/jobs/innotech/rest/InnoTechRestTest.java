@@ -1,6 +1,7 @@
 package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -24,6 +25,7 @@ public class InnoTechRestTest {
     @BeforeTest
     public void before() {
         RestAssured.baseURI = BASE_URI; // TODO: Move to REST config
+        RestAssured.filters(new AllureRestAssured());
         user = new User();
         user = api // TODO: Move to steps or test fragment
                 .deleteUser(user.getUsername()) // just in case if the user wasn't deleted @afterTest
