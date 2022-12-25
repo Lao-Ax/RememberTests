@@ -49,6 +49,11 @@
             <artifactId>allure-rest-assured</artifactId>
             <version>2.20.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>6.10.3</version>
+        </dependency>
 
     </dependencies>
 
