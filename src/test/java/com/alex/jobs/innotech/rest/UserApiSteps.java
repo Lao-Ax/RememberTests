@@ -1,7 +1,6 @@
 package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
-//import io.qameta.allure.restassured.AllureRestAssured;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.anyOf;
@@ -42,8 +41,9 @@ public class UserApiSteps {
         given()
 //                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
+                .pathParam("username", user.getUsername())
                 .body(user)
-                .post("/");
+                .put("/{username}");
         return this;
     }
 
