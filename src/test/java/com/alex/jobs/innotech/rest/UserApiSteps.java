@@ -1,6 +1,7 @@
 package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
+import io.qameta.allure.Step;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.anyOf;
@@ -8,9 +9,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 public class UserApiSteps {
 
+    @Step("Create user")
     public UserApiSteps createUser(User user) {
         given()
-//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .body(user)
                 .post("/");
@@ -18,9 +19,9 @@ public class UserApiSteps {
 
     }
 
+    @Step("Login")
     public UserApiSteps login(User user) {
         given()
-//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .param("username", user.getUsername())
                 .param("password", user.getPassword())
@@ -28,18 +29,18 @@ public class UserApiSteps {
         return this;
     }
 
+    @Step("Get user data")
     public User getUser(String username) {
         return given()
-//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .pathParam("username", username)
                 .get("/{username}")
                 .as(User.class);
     }
 
+    @Step("Update user data")
     public UserApiSteps updateUser(User user) {
         given()
-//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .pathParam("username", user.getUsername())
                 .body(user)
@@ -47,9 +48,9 @@ public class UserApiSteps {
         return this;
     }
 
+    @Step("Delete user")
     public UserApiSteps deleteUser(String username) {
         given()
-//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .pathParam("username", username)
                 .delete("/{username}")

@@ -2,6 +2,7 @@ package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.testng.annotations.AfterTest;
@@ -36,6 +37,7 @@ public class InnoTechRestTest {
                 .getUser(user.getUsername());
     }
 
+    @Step("Update user data")
     private void updateUserData() {
         // TODO: update all user fields
         user.setEmail("newEmail@wiley.com");
