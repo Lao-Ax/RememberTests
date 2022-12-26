@@ -1,7 +1,7 @@
 package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
-import io.restassured.specification.RequestSpecification;
+//import io.qameta.allure.restassured.AllureRestAssured;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.anyOf;
@@ -11,6 +11,7 @@ public class UserApiSteps {
 
     public UserApiSteps createUser(User user) {
         given()
+//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .body(user)
                 .post("/");
@@ -20,6 +21,7 @@ public class UserApiSteps {
 
     public UserApiSteps login(User user) {
         given()
+//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .param("username", user.getUsername())
                 .param("password", user.getPassword())
@@ -29,6 +31,7 @@ public class UserApiSteps {
 
     public User getUser(String username) {
         return given()
+//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .pathParam("username", username)
                 .get("/{username}")
@@ -36,14 +39,17 @@ public class UserApiSteps {
     }
 
     public UserApiSteps updateUser(User user) {
-        RequestSpecification request = given();
-        request.header("Content-Type", "application/json");
-        request.body(user).post("/");
+        given()
+//                .filters(new AllureRestAssured()).log().all()
+                .header("Content-Type", "application/json")
+                .body(user)
+                .post("/");
         return this;
     }
 
     public UserApiSteps deleteUser(String username) {
         given()
+//                .filters(new AllureRestAssured()).log().all()
                 .header("Content-Type", "application/json")
                 .pathParam("username", username)
                 .delete("/{username}")

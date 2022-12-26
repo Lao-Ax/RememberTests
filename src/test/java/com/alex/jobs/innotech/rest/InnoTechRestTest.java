@@ -1,6 +1,7 @@
 package com.alex.jobs.innotech.rest;
 
 import com.alex.jobs.innotech.rest.dto.User;
+import io.qameta.allure.Feature;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.testng.annotations.AfterTest;
@@ -16,6 +17,7 @@ import static org.testng.Assert.assertEquals;
     We also noticed, that although methods 'delete' and 'update' claims for logged in user,
     they do not require it and there is no place for login session value.
  */
+@Feature("Update User API")
 public class InnoTechRestTest {
 
     private static final String BASE_URI = "https://petstore.swagger.io/v2/user";
@@ -34,7 +36,6 @@ public class InnoTechRestTest {
                 .getUser(user.getUsername());
     }
 
-    // Step
     private void updateUserData() {
         // TODO: update all user fields
         user.setEmail("newEmail@wiley.com");
@@ -42,8 +43,8 @@ public class InnoTechRestTest {
         user.setPassword("newPass");
     }
 
-    @Test
-    public void testName() {
+    @Test(description = "Update user data")
+    public void updateUserTest() {
         updateUserData();
         User updatedUser = api
                 .updateUser(user)
