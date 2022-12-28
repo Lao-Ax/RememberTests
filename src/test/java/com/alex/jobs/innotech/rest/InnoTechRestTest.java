@@ -17,6 +17,10 @@ import static org.testng.Assert.assertEquals;
     have been already well tested in appropriate suites.
     We also noticed, that although methods 'delete' and 'update' claims for logged in user,
     they do not require it and there is no place for login session value.
+
+    To build a beautified Allure report, please:
+        1) install allure commandline tool
+        2) run from the project root: `allure serve`
  */
 @Feature("Update User API")
 public class InnoTechRestTest {
