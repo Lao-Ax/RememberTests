@@ -2,7 +2,8 @@ package com.alex.jobs.innotech.selenide.pages.locators;
 
 import org.openqa.selenium.By;
 
-// In the future it should implement iYaLocators interface
+// In the future it should implement iYaLocators interface in case
+// if different platforms would have different locators.
 public class YaLocators {
 
     public static By searchInput(){

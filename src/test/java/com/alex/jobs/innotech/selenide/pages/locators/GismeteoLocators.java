@@ -2,6 +2,8 @@ package com.alex.jobs.innotech.selenide.pages.locators;
 
 import org.openqa.selenium.By;
 
+// In the future it should implement an interface in case
+// if different platforms would have different locators.
 public class GismeteoLocators {
 
     public static By searchInputField() {
